@@ -24,6 +24,8 @@ PROCESSED_PATH = "processed/"
 FAILED_PATH = "failed/"
 VECTOR_DB_PATH = "vectorstore/"
 SUPPORTED_EXTENSIONS = [".pdf", ".txt", ".docx"]
+skipped_files = []
+failed_files = []
 
 # =========================
 # INITIALIZE DIRECTORIES
@@ -111,7 +113,7 @@ def ingest_documents():
 
         ext = Path(file_path).suffix.lower()
 
-        if ext not in SUPPORTED_EXTENSIONS:
+        if ext not in SUPPORTED_EXTENSIONS:                 #react 
             print(f"Skipping unsupported file: {file_name}")
             continue
 
@@ -139,7 +141,7 @@ def ingest_documents():
             print(f"Chunks created: {len(chunks)}")
 
         except Exception as e:
-            print(f"Error processing {file_name}: {e}")
+            print(f"Error processing {file_name}: {e}") #react 
 
     if not all_chunks:
         print("No documents found")
